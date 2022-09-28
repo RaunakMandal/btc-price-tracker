@@ -16,6 +16,5 @@ this.pool.query(
     } else {
       console.log("Table created");
     }
-    this.pool.end();
   }
 );
