@@ -1,7 +1,7 @@
 const { pool, TABLE_NAME } = require("../conn");
-
 var CronJob = require("cron").CronJob;
-exports.job = new CronJob("30 * * * * *", () => {
+const fetch = require("node-fetch");
+exports.job = new CronJob("*/30 * * * *", () => {
   console.log("Fetching price every 30 minute...");
   apiCall();
 });

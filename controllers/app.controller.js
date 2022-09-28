@@ -1,4 +1,5 @@
 const { pool, TABLE_NAME } = require("../conn");
+const fetch = require("node-fetch");
 
 exports.showMethods = (req, res) => {
   return res.status(200).json({
@@ -89,6 +90,7 @@ exports.showLimit = async (req, res) => {
   );
 };
 exports.fetchAndSend = async (req, res) => {
+  // console.log("Fetching price...");
   let val = await fetch("https://api.coingecko.com/api/v3/exchange_rates")
     .then((result) => {
       return result;
