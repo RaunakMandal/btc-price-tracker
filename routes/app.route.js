@@ -13,6 +13,14 @@ router.get("/", showMethods);
 router.get("/fetch/all", isAuthenticated, showAll);
 router.get("/fetch", isAuthenticated, showLimit);
 router.get("/fetch/current", isAuthenticated, fetchAndSend);
+router.get("/start", isAuthenticated, (req, res) => {
+  job.start();
+  return res.status(200).json({
+    status: "Success",
+    code: 200,
+    message: "Job started",
+  });
+});
 router.get("/stop", isAuthenticated, (req, res) => {
   job.stop();
   return res.status(200).json({
