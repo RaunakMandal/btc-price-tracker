@@ -10,9 +10,9 @@
   "author": "Raunak Mandal",
   "license": "ISC",
   "dependencies": {
+    "cron": "^2.1.0",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "node-cron": "^3.0.2",
     "nodemon": "^2.0.20",
     "pg": "^8.8.0"
   }
