@@ -22,6 +22,19 @@ exports.showMethods = (req, res) => {
         auth: "Password required in header as {Auth: <password>}",
         description: "Returns the last <limit> entries from the database",
       },
+      {
+        method: "GET",
+        path: "/fetch/current",
+        auth: "Password required in header as {Auth: <password>}",
+        description:
+          "Fetches the current INR value and stores it in the database",
+      },
+      {
+        method: "GET",
+        path: "/stop",
+        auth: "Password required in header as {Auth: <password>}",
+        description: "Stops the Cron Job",
+      },
     ],
   });
 };
@@ -94,7 +107,7 @@ exports.fetchAndSend = async (req, res) => {
           inr_value: result.rates.inr.value,
         };
         pool.query(
-          `INSERT INTO ${TABLE_NAME}(_id, update_time, inr_value) VALUES($1, $2, $3)`,
+          `INSERT INTO ${TABLE_NAME} (_id, update_time, inr_value) VALUES($1, $2, $3)`,
           [data._id, data.update_time, data.inr_value],
           (err) => {
             if (err) {
